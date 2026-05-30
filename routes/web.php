@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Página de inicio
@@ -25,13 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Módulo de Roles (CRUD completo con controlador)
+    // Módulo de Roles (CRUD completo)
     Route::resource('roles', RoleController::class);
 
-    // Módulo de Usuarios (placeholder)
-    Route::get('/users', function () {
-        return view('users.index');
-    })->name('users.index');
+    // Módulo de Usuarios
+    Route::resource('users', UserController::class)->except(['show']);
+    // Ruta adicional para activar/desactivar usuario
+    Route::patch('/users/{user}/toggle-estado', [UserController::class, 'toggleEstado'])
+         ->name('users.toggle-estado');
 
     // Módulo de Clientes (placeholder)
     Route::get('/clients', function () {

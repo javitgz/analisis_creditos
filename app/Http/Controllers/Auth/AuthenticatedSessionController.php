@@ -26,6 +26,13 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        // Verificar si el usuario está activo
+        if (auth()->user()->estado === 0) {
+            auth()->logout();
+            return redirect()->route('login')
+                     ->withErrors(['email' => 'Tu cuenta está inactiva. Contacta al administrador.']);
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(route('dashboard', absolute: false));

@@ -30,6 +30,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('roles.index') }}" 
+                           class="nav-link text-white {{ request()->routeIs('roles.*') ? 'active bg-primary' : '' }}">
+                            🔑 Roles
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('users.index') }}" 
                            class="nav-link text-white {{ request()->routeIs('users.*') ? 'active bg-primary' : '' }}">
                             👥 Usuarios
@@ -39,12 +45,6 @@
                         <a href="{{ route('clients.index') }}" 
                            class="nav-link text-white {{ request()->routeIs('clients.*') ? 'active bg-primary' : '' }}">
                             🏢 Clientes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('roles.index') }}" 
-                           class="nav-link text-white {{ request()->routeIs('roles.*') ? 'active bg-primary' : '' }}">
-                            🔑 Roles
                         </a>
                     </li>
                 </ul>
