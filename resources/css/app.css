@@ -1,3 +1,2 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Importacion de estilos CSS de Bootstrap  */
+@import 'bootstrap/dist/css/bootstrap.min.css';

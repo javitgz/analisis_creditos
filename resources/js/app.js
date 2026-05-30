@@ -1,7 +1,2 @@
-
-
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
+/* Importacion de script para Bootstrap */
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
