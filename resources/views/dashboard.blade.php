@@ -1,17 +1,9 @@
+{{-- resources/views/dashboard.blade.php --}}
+{{-- Vista del dashboard después de iniciar sesión --}}
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
+    <div class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Dashboard</h2>
+        <p class="text-gray-600">Bienvenido, {{ auth()->user()->name }}.</p>
+        <p class="text-gray-600 mt-2">Aquí se mostrarán las estadísticas y accesos rápidos del sistema de análisis de crédito.</p>
     </div>
 </x-app-layout>
