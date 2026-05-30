@@ -14,10 +14,11 @@
 <body>
     <div class="d-flex vh-100">
         {{-- SIDEBAR --}}
-        <aside class="d-flex flex-column flex-shrink-0 text-white bg-dark" style="width: 260px;">
+        <aside class="d-flex flex-column flex-shrink-0 text-white" style="width: 260px; background-color: #0a1f44;">
             {{-- Cabecera --}}
-            <div class="text-center py-4 border-bottom border-secondary">
-                <span class="fs-5 fw-bold">{{ config('app.name', 'SIACRE') }}</span>
+            <div class="text-center">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" 
+                style="width: 100px; height: 100px; object-fit: contain;">
             </div>
 
             {{-- Navegación --}}
@@ -27,12 +28,6 @@
                         <a href="{{ route('dashboard') }}" 
                            class="nav-link text-white {{ request()->routeIs('dashboard') ? 'active bg-primary' : '' }}">
                             📊 Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('roles.index') }}" 
-                           class="nav-link text-white {{ request()->routeIs('roles.*') ? 'active bg-primary' : '' }}">
-                            🔑 Roles
                         </a>
                     </li>
                     <li class="nav-item">
@@ -51,10 +46,10 @@
             </nav>
 
             {{-- Footer con usuario --}}
-            <div class="border-top border-secondary p-3 mt-auto">
-                <div class="d-flex align-items-center text-white mb-2">
+            <div class="p-3 mt-auto">
+                <div class="d-flex align-items-center text-white mb-4">
                     <div class="flex-shrink-0">
-                        <svg class="bi bi-person-circle" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+                        <svg class="bi bi-person-circle" width="50" height="50" fill="currentColor" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                         </svg>

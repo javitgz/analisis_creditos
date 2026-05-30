@@ -9,7 +9,7 @@
     <title>Registro - {{ config('app.name', 'SIACRE') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+<body class="d-flex align-items-center justify-content-center vh-100" style="background-color: #0a1f44;">
     <div class="card shadow" style="width: 100%; max-width: 420px;">
         <div class="card-body p-4">
             {{-- Logo --}}
