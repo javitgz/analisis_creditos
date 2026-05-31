@@ -18,10 +18,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthApiController::class, 'me'])->name('api.me');
 
     // Roles API
-    Route::apiResource('roles', RoleApiController::class);
+    Route::apiResource('roles', RoleApiController::class)->names('api.roles');
 
     // Usuarios API
-    Route::apiResource('users', UserApiController::class);
+    Route::apiResource('users', UserApiController::class)->names('api.users');
     Route::patch('users/{user}/toggle-estado', [UserApiController::class, 'toggleEstado'])
          ->name('api.users.toggle-estado');
 });

@@ -46,8 +46,18 @@ class RoleApiController extends Controller
             'permissions' => 'nullable|array',
         ]);
 
-        $role = Role::create(['name' => $request->name]);
-        $role->syncPermissions($request->permissions ?? []);
+        $role = Role::create([
+            'name' => $request->name,
+            'guard_name' => 'web', // Forzar guard web
+        ]);
+
+        // Sincronizar permisos buscándolos explícitamente por guard web
+        if ($request->has('permissions')) {
+            $permissions = collect($request->permissions)->map(function ($name) {
+                return Permission::findByName($name, 'web');
+            });
+            $role->syncPermissions($permissions);
+        }
 
         return response()->json([
             'success' => true,
@@ -69,7 +79,14 @@ class RoleApiController extends Controller
 
         $role->name = $request->name;
         $role->save();
-        $role->syncPermissions($request->permissions ?? []);
+
+        // Sincronizar permisos buscándolos explícitamente por guard web
+        if ($request->has('permissions')) {
+            $permissions = collect($request->permissions)->map(function ($name) {
+                return Permission::findByName($name, 'web');
+            });
+            $role->syncPermissions($permissions);
+        }
 
         return response()->json([
             'success' => true,

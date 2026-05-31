@@ -26,22 +26,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Módulo de Roles: solo quien tenga permiso 'gestionar roles'
-    Route::middleware('can:gestionar roles')->group(function () {
-        Route::resource('roles', RoleController::class);
-    });
+    // Módulo de Roles
+    Route::resource('roles', RoleController::class);
 
-    // Módulo de Usuarios: solo quien tenga permiso 'ver usuarios'
-    Route::middleware('can:ver usuarios')->group(function () {
-        Route::resource('users', UserController::class)->except(['show']);
-        Route::patch('/users/{user}/toggle-estado', [UserController::class, 'toggleEstado'])
-             ->name('users.toggle-estado');
-    });
+    // Módulo de Usuarios
+    Route::resource('users', UserController::class)->except(['show']);
+    Route::patch('/users/{user}/toggle-estado', [UserController::class, 'toggleEstado'])
+         ->name('users.toggle-estado');
 
-    // Módulo de Clientes (placeholder): solo quien tenga permiso 'ver clientes'
-    Route::middleware('can:ver clientes')->group(function () {
-        Route::get('/clients', function () {
-            return view('clients.index');
-        })->name('clients.index');
-    });
+    // Módulo de Clientes (placeholder)
+    Route::get('/clients', function () {
+        return view('clients.index');
+    })->name('clients.index');
 });
